@@ -3,6 +3,7 @@
   background: none;
   margin: 0 !important;
   padding: 5px !important;
+  /* background-color: purple; */
 }
 .image {
   outline: none !important;
@@ -11,5 +12,10 @@
 }
 .cardcontainer {
   margin-top: 50px;
+  /* padding: 0 150px; */
+  /* background-color: green; */
+}
+
+.movieCarousel {
   padding: 0 150px;
 }
