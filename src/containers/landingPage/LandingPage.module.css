@@ -1,0 +1,61 @@
+.body {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  padding: 10px 40px;
+}
+.signinButton {
+  background-color: red;
+  padding: 1px 10px;
+  font-size: 12px;
+  border-radius: 5%;
+  outline: none;
+  border: 1px solid red;
+}
+.signinButton:hover {
+  background-color: red !important;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.logo {
+  color: red;
+  font-weight: 900;
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+}
+
+.contentContainer {
+  margin-top: 4%;
+  text-align: center;
+}
+.contentTitle {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.contentSubtitle {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.submit {
+  margin: 30px;
+  width: 30% !important;
+  text-transform: uppercase;
+  background-color: red;
+  outline: none;
+  border: 1px solid transparent;
+}
+.submit:hover {
+  background-color: red !important;
+  outline: none;
+  border: 1px solid transparent;
+}

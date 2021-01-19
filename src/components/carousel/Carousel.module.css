@@ -1,0 +1,15 @@
+.card {
+  outline: none !important;
+  background: none;
+  margin: 0 !important;
+  padding: 5px !important;
+}
+.image {
+  outline: none !important;
+  background: none;
+  height: 130px !important;
+}
+.cardcontainer {
+  margin-top: 50px;
+  padding: 0 150px;
+}
