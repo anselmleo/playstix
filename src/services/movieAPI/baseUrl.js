@@ -1,8 +1,9 @@
-import axios from 'axios';
-
+import axios from "axios";
 export default axios.create({
-    baseUrl: "http://www.omdbapi.com"
+  baseUrl: "https://api.themoviedb.org",
 });
 
 // key
 // 3c47ce90
+
+// https://image.tmdb.org/t/p/w200/path

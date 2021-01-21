@@ -1,164 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Card, Carousel } from "react-bootstrap";
 import Style from "./Carousel.module.css";
+import movieList from "../../services/movieAPI/movieAPIService";
 
 function MovieCarousel() {
+  const [actionMovies, setActionMovies] = useState([]);
+  const [movieImage, setMovieImage] = useState("");
+  const getActionMovieList = (e) => {
+    movieList
+      .getAllMovies()
+      .then((response) => {
+        console.log("response", response);
+        setActionMovies(response.data.results);
+      })
+      .catch((e) => {
+        console.log("the error", e.response);
+      });
+  };
+
+  useEffect(() => {
+    getActionMovieList();
+  }, []);
+
+  console.log("got response", actionMovies);
+
+  // movieList.getAllMovieImages(actionMovie.backdrop_path)
+  // .then((response) => {
+
+  //  console.log(response)
+  // })
+  // .catch((e) => {
+  //   console.log("ddddd", e.response);
+  // })
+
   return (
-    <div className={Style.movieCarousel}>
-    <Carousel indicators={false} controls>
-      <Carousel.Item>
-        {/* <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
-      alt="First slide"
-    /> */}
-
-        <div className={Style.cardcontainer}>
-          <Row>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-          </Row>
-        </div>
-      </Carousel.Item>
-      <Carousel.Item>
-        {/* <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
-      alt="First slide"
-    /> */}
-
-        <div className={Style.cardcontainer}>
-          <Row>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-            <Col className="mt-1 p-0" sm={3}>
-              <Card className={Style.card}>
-                <Card.Img
-                  className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
-                />
-              </Card>
-            </Col>
-          </Row>
-        </div>
-      </Carousel.Item>
-    </Carousel>
+    <div>
+      <Carousel indicators={false} controls>
+        <Carousel.Item interval={1000}>
+          <div className={Style.cardcontainer}>
+            <Row>
+              {actionMovies.map((actionMovie) => (
+                <Col className="mt-1 p-0" sm={3}>
+                  <Card className={Style.card}>
+                    <Card.Img
+                      className={Style.image}
+                      src={`https://image.tmdb.org/t/p/w300/${actionMovie.backdrop_path}`}
+                    />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div className={Style.cardcontainer}>
+            <Row>
+              {actionMovies.map((actionMovie) => (
+                <Col className="mt-1 p-0" sm={3}>
+                  <Card className={Style.card}>
+                    <Card.Img
+                      className={Style.image}
+                      src={`https://image.tmdb.rg/t/p/w300/${actionMovie.backdrop_path}`}
+                    />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
 }
