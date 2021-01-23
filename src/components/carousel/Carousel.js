@@ -19,7 +19,7 @@ function MovieCarousel() {
               <Card className={Style.card}>
                 <Card.Img
                   className={Style.image}
-                  src="https://media.newyorker.com/photos/593581e785bd115baccba6d2/master/pass/Lane-Ten-Things-about-Wonder-Woman.jpg"
+                  src="https://image.tmdb.org/t/p/w200/2AwPvNHphpZBJDqjZKVuMAbvS0v.jpg"
                 />
               </Card>
             </Col>
