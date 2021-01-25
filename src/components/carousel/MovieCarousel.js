@@ -11,6 +11,7 @@ function MovieCarousel({
   popular,
   children,
   action,
+  //hover,
 }) {
   let movieSplit = [];
   let imageCards = [];
@@ -29,6 +30,8 @@ function MovieCarousel({
 
   let handleHoverImage = (imageUrl) => {
     setHoverImage(imageUrl);
+
+    // hover(hoverImage);
     alert(hoverImage);
   };
 

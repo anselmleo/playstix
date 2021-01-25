@@ -12,11 +12,13 @@
   margin: 0 !important;
   padding: 0 5px 5px 5px !important;
   border: none !important;
+  cursor: pointer;
 }
 .image {
   outline: none !important;
   background: none;
   height: 130px !important;
+  cursor: pointer;
 }
 .cardcontainer {
   padding: 0 40px;

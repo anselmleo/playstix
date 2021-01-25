@@ -8,6 +8,7 @@ import movieList from "../../services/movieAPI/movieAPIService";
 function LandingPage() {
   const [actionMovies, setActionMovies] = useState([]);
   const [value, setValue] = React.useState(0);
+  // const [imgHover, setImgHover] = React.useState("");
   const [movieGenre, setMovieGenre] = useState({
     children: false,
     comedy: false,
@@ -26,6 +27,7 @@ function LandingPage() {
       nollywood: false,
     });
   };
+
   const handlePopularClick = () => {
     setMovieGenre({
       children: false,
@@ -104,6 +106,8 @@ function LandingPage() {
     images.push(`url(https://image.tmdb.org/t/p/w500/${movies.backdrop_path})`)
   );
 
+  // console.log("hover", imgHover);
+
   return (
     <div
       style={{
@@ -157,6 +161,7 @@ function LandingPage() {
               comedy={handleComedyClick}
               action={handleActionClick}
               actionMovies={actionMovies}
+              // hover={(hoverImage) => setImgHover(hoverImage)}
             />
           </Col>
           <Col className="m-0" sm={3}></Col>
