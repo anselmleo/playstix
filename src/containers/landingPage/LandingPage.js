@@ -1,17 +1,89 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Button, Col, Row } from "react-bootstrap";
-import Carousel from "../../components/carousel/Carousel";
+import MovieCarousel from "../../components/carousel/MovieCarousel";
+import GameCarousel from "../../components/carousel/GameCarousel";
 import Style from "./LandingPage.module.css";
 import movieList from "../../services/movieAPI/movieAPIService";
 
 function LandingPage() {
   const [actionMovies, setActionMovies] = useState([]);
   const [value, setValue] = React.useState(0);
+  const [movieGenre, setMovieGenre] = useState({
+    children: false,
+    comedy: false,
+    popular: true,
+    action: false,
+    drama: false,
+    nollywood: false,
+  });
+  const handleChilrenClick = () => {
+    setMovieGenre({
+      children: true,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
+  const handlePopularClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: true,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
+
+  const handleComedyClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: true,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
+  const handleActionClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: true,
+      drama: false,
+      nollywood: false,
+    });
+  };
+  const handleDramaClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: true,
+      nollywood: false,
+    });
+  };
+
+  const handleNollywoodClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: true,
+    });
+  };
 
   const getActionMovieList = (e) => {
     movieList
       .getAllMovies()
       .then((response) => {
+        console.log(response.data.results);
         setActionMovies(response.data.results);
       })
       .catch((e) => {
@@ -23,7 +95,7 @@ function LandingPage() {
     getActionMovieList();
     const interval = setInterval(() => {
       setValue((v) => (v === 20 ? 0 : v + 1));
-    }, 5000);
+    }, 6000);
   }, []);
 
   let images = [];
@@ -36,10 +108,11 @@ function LandingPage() {
     <div
       style={{
         backgroundImage: images[value],
-        backgroundRepeat: "no-repeat",
+        // backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
         WebkitBackgroundSize: "cover",
+        // opacity: "0.9",
       }}
       className={Style.body}
     >
@@ -65,7 +138,26 @@ function LandingPage() {
                 Signup for free <i className="ml-2 fas fa-greater-than"></i>
               </Button>
             </div>
-            <Carousel actionMovies={actionMovies} />
+            <MovieCarousel
+              movieGenre={movieGenre}
+              children={handleChilrenClick}
+              popular={handlePopularClick}
+              drama={handleDramaClick}
+              nollywood={handleNollywoodClick}
+              comedy={handleComedyClick}
+              action={handleActionClick}
+              actionMovies={actionMovies}
+            />
+            <GameCarousel
+              movieGenre={movieGenre}
+              children={handleChilrenClick}
+              popular={handlePopularClick}
+              drama={handleDramaClick}
+              nollywood={handleNollywoodClick}
+              comedy={handleComedyClick}
+              action={handleActionClick}
+              actionMovies={actionMovies}
+            />
           </Col>
           <Col className="m-0" sm={3}></Col>
         </Row>

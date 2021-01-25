@@ -1,9 +1,17 @@
+.carouselContainer {
+  margin-top: 15px;
+}
+.title {
+  font-weight: bold;
+  font-size: 15px;
+}
+
 .card {
   outline: none !important;
   background: none;
   margin: 0 !important;
-  padding: 5px !important;
-  /* background-color: purple; */
+  padding: 0 5px 5px 5px !important;
+  border: none !important;
 }
 .image {
   outline: none !important;
@@ -11,11 +19,39 @@
   height: 130px !important;
 }
 .cardcontainer {
-  margin-top: 30px;
   padding: 0 40px;
   /* background-color: green; */
 }
 
 .movieCarousel {
   padding: 0 110px;
+}
+
+.headeractive {
+  border-bottom: 3px solid red;
+  cursor: pointer;
+  margin-left: 0;
+  margin-right: 0;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.headerinactive {
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: rgb(160, 157, 157) !important;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.headerinactive:hover {
+  color: #ffffff !important;
+}
+
+.tabcontainer {
+  padding: 5px 40px 10px 40px;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
