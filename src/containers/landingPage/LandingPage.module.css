@@ -45,6 +45,10 @@
   margin: 0;
 }
 
+.logo :hover{
+  cursor: pointer;
+}
+
 .contentContainer {
   margin-top: 4%;
   text-align: center;

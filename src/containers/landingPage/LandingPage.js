@@ -2,12 +2,34 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Button, Col, Row } from "react-bootstrap";
 import MovieCarousel from "../../components/carousel/MovieCarousel";
 import GameCarousel from "../../components/carousel/GameCarousel";
+import LandingTitle from "../../components/landingTitle/LandingTitle";
+import SignIn from "../../components/signIn/SignIn";
 import Style from "./LandingPage.module.css";
 import movieList from "../../services/movieAPI/movieAPIService";
+
 
 function LandingPage() {
   const [actionMovies, setActionMovies] = useState([]);
   const [value, setValue] = React.useState(0);
+  const [hideComponent, setHideComponent] = useState({
+    others: true,
+    signIn: false
+  });
+
+  const handleSignIn = () => {
+    setHideComponent({
+      others: false,
+      signIn: true
+    });
+  };
+
+  const handleGoHome = () => {
+    setHideComponent({
+      others: true,
+      signIn: false
+    });
+  };
+
   const [movieGenre, setMovieGenre] = useState({
     children: false,
     comedy: false,
@@ -117,47 +139,42 @@ function LandingPage() {
       className={Style.body}
     >
       <Navbar className={Style.nav}>
-        <Navbar className={Style.logo}>Playstix</Navbar>
-        <Button className={Style.signinButton}>Sign-in</Button>
+        <Navbar className={Style.logo} onClick={handleGoHome}>Playstix</Navbar>
+        <Button className={Style.signinButton} onClick={handleSignIn}>Sign-in</Button>
       </Navbar>
+
       <div className={Style.contentContainer}>
+        {hideComponent.signIn && <SignIn />}
         <Row className="m-0">
           <Col className="m-0" sm={3}></Col>
           <Col className="m-0" sm={6}>
-            <div>
-              <div className={Style.contentTitle}>
-                Unlimited movies,
-                <br />
-                games, and more.
-              </div>
-              <div className={Style.contentSubtitle}>
-                Watch anywhare, Play anytime
-              </div>
+            {
+              hideComponent.others &&
+              <>
+                <LandingTitle />
 
-              <Button className={Style.submit}>
-                Signup for free <i className="ml-2 fas fa-greater-than"></i>
-              </Button>
-            </div>
-            <MovieCarousel
-              movieGenre={movieGenre}
-              children={handleChilrenClick}
-              popular={handlePopularClick}
-              drama={handleDramaClick}
-              nollywood={handleNollywoodClick}
-              comedy={handleComedyClick}
-              action={handleActionClick}
-              actionMovies={actionMovies}
-            />
-            <GameCarousel
-              movieGenre={movieGenre}
-              children={handleChilrenClick}
-              popular={handlePopularClick}
-              drama={handleDramaClick}
-              nollywood={handleNollywoodClick}
-              comedy={handleComedyClick}
-              action={handleActionClick}
-              actionMovies={actionMovies}
-            />
+                <MovieCarousel
+                movieGenre={movieGenre}
+                children={handleChilrenClick}
+                popular={handlePopularClick}
+                drama={handleDramaClick}
+                nollywood={handleNollywoodClick}
+                comedy={handleComedyClick}
+                action={handleActionClick}
+                actionMovies={actionMovies}
+                />
+                <GameCarousel
+                movieGenre={movieGenre}
+                children={handleChilrenClick}
+                popular={handlePopularClick}
+                drama={handleDramaClick}
+                nollywood={handleNollywoodClick}
+                comedy={handleComedyClick}
+                action={handleActionClick}
+                actionMovies={actionMovies}
+                />
+            </>
+            }
           </Col>
           <Col className="m-0" sm={3}></Col>
         </Row>

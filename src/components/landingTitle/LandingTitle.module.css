@@ -1,0 +1,28 @@
+.contentContainer {
+  margin-top: 4%;
+  text-align: center;
+}
+.contentTitle {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.contentSubtitle {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+
+.submit {
+  margin: 20px 20px 5px 20px;
+  width: 30% !important;
+  text-transform: uppercase;
+  background-color: red;
+  outline: none;
+  border: 1px solid transparent;
+}
+.submit:hover {
+  background-color: red !important;
+  outline: none;
+  border: 1px solid transparent;
+}
