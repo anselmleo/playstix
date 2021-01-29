@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Col, Row, Card, Carousel } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 import Style from "./Carousel.module.css";
+import Slider from "react-slick";
 
 function MovieCarousel({
   actionMovies,
@@ -11,7 +12,8 @@ function MovieCarousel({
   popular,
   children,
   action,
-  //hover,
+  setImgUrl,
+  imgUrl,
 }) {
   let movieSplit = [];
   let imageCards = [];
@@ -26,24 +28,63 @@ function MovieCarousel({
     imageCards.push(movieSplit);
   }
 
-  const [hoverImage, setHoverImage] = React.useState("");
-
-  let handleHoverImage = (imageUrl) => {
-    setHoverImage(imageUrl);
-
-    // hover(hoverImage);
-    alert(hoverImage);
+  var settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 6,
+    pauseOnHover: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 4500,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    swipeToSlide: true,
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       // slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
   };
 
+  let handleShowHoverImage = (url) => {
+    setImgUrl(url);
+  };
+
+  let handleHideHoverImage = () => {
+    setImgUrl(false);
+  };
   return (
-    <div className={Style.carouselContainer}>
-      <div className={Style.title}>MOVIES</div>
+    <div className={Style.moviecarouselContainer}>
+      {/* <div className={Style.title}>MOVIES</div> */}
       <div className={Style.tabcontainer}>
         <Row>
           <Col
             onClick={children}
             className={
-              movieGenre.children ? Style.headeractive : Style.headerinactive
+              movieGenre.children
+                ? Style.movieheaderactive
+                : Style.headerinactive
             }
           >
             Children{" "}
@@ -51,7 +92,7 @@ function MovieCarousel({
           <Col
             onClick={comedy}
             className={
-              movieGenre.comedy ? Style.headeractive : Style.headerinactive
+              movieGenre.comedy ? Style.movieheaderactive : Style.headerinactive
             }
           >
             Comedey
@@ -59,7 +100,9 @@ function MovieCarousel({
           <Col
             onClick={popular}
             className={
-              movieGenre.popular ? Style.headeractive : Style.headerinactive
+              movieGenre.popular
+                ? Style.movieheaderactive
+                : Style.headerinactive
             }
           >
             Popular
@@ -67,7 +110,7 @@ function MovieCarousel({
           <Col
             onClick={action}
             className={
-              movieGenre.action ? Style.headeractive : Style.headerinactive
+              movieGenre.action ? Style.movieheaderactive : Style.headerinactive
             }
           >
             Action
@@ -75,7 +118,7 @@ function MovieCarousel({
           <Col
             onClick={drama}
             className={
-              movieGenre.drama ? Style.headeractive : Style.headerinactive
+              movieGenre.drama ? Style.movieheaderactive : Style.headerinactive
             }
           >
             Drama
@@ -83,39 +126,36 @@ function MovieCarousel({
           <Col
             onClick={nollywood}
             className={
-              movieGenre.nollywood ? Style.headeractive : Style.headerinactive
+              movieGenre.nollywood
+                ? Style.movieheaderactive
+                : Style.headerinactive
             }
           >
             Nollywood
           </Col>
         </Row>
       </div>
-      <Carousel indicators={false} controls={true}>
-        {imageCards.map((imageCard, index) => (
-          <Carousel.Item key={index}>
-            <div className={Style.cardcontainer}>
-              <Row>
-                {imageCard.map((card) => {
-                  let imageUrl = `https://image.tmdb.org/t/p/w300/${card.poster_path}`;
-                  return (
-                    <Col key={card.id} className=" p-1" sm={2}>
-                      <Card
-                        style={{ zIndex: "99" }}
-                        onMouseEnter={() => handleHoverImage(imageUrl)}
-                      >
-                        <Card.Img
-                          className={Style.image}
-                          src={`https://image.tmdb.org/t/p/w300/${card.poster_path}`}
-                        />
-                      </Card>
-                    </Col>
-                  );
-                })}
-              </Row>
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      <div>
+        <Slider {...settings}>
+          {actionMovies.map((imageCard, index) => {
+            let url = imageCard.backdrop_path;
+            return (
+              <div className={Style.cardcontainer}>
+                <Card
+                  onMouseEnter={() => handleShowHoverImage(url)}
+                  onMouseLeave={handleHideHoverImage}
+                  className={Style.card}
+                >
+                  <Card.Img
+                    className={Style.image}
+                    src={`https://image.tmdb.org/t/p/w300/${imageCard.poster_path}`}
+                  />
+                </Card>
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
     </div>
   );
 }

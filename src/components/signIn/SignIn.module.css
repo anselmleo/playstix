@@ -1,0 +1,55 @@
+.formcontainer {
+  /* background: #000000; */
+  margin: 5.5% 36%;
+  padding: 30px 50px;
+  border: 1px solid rgba(255, 0, 0, 0.7);
+  border-radius: 6px;
+  text-align: left;
+}
+.header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.input {
+  margin-bottom: 30px !important;
+}
+.submit {
+  width: 100% !important;
+  background-color: red;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.submit:hover {
+  background-color: red;
+  border: 1px solid transparent;
+}
+.submit:focus {
+  background-color: red;
+  outline: none;
+}
+.submit:active {
+  background-color: red;
+  outline: none;
+}
+
+.signinInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.createaccount {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.forgotpass {
+  cursor: pointer !important;
+}
+.signup {
+  font-weight: 700;
+  cursor: pointer !important;
+}

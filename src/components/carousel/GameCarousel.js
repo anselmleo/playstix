@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Col, Row, Card, Carousel } from "react-bootstrap";
+import React, { useState } from "react";
+import { Col, Row, Card } from "react-bootstrap";
 import Style from "./Carousel.module.css";
+import Slider from "react-slick";
 
 function MovieCarousel({
   actionMovies,
@@ -11,6 +12,8 @@ function MovieCarousel({
   popular,
   children,
   action,
+  imageUrl,
+  setImgUrl,
 }) {
   let movieSplit = [];
   let imageCards = [];
@@ -25,21 +28,88 @@ function MovieCarousel({
     imageCards.push(movieSplit);
   }
 
-  // const { direction, setDirection } = React.useState(null);
+  var settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 6,
+    pauseOnHover: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 4500,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    swipeToSlide: true,
+    // initialSlide: 0,
+    rtl: true,
 
-  // let handleSlideDirection = (e, direction) => {
-  //   setDirection(e.direction);
-  // };
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       // slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
+  };
+
+  let handleShowHoverImage = (url) => {
+    setImgUrl(url);
+  };
+
+  let handleHideHoverImage = () => {
+    setImgUrl(false);
+  };
 
   return (
-    <div className={Style.carouselContainer}>
-      <div className={Style.title}>GAMES</div>
+    <div className={Style.gamecarouselContainer}>
+      <div>
+        <Slider {...settings}>
+          {actionMovies.map((imageCard, index) => {
+            let url = imageCard.backdrop_path;
+            return (
+              <div className={Style.cardcontainer}>
+                <Card
+                  onMouseEnter={() => handleShowHoverImage(url)}
+                  onMouseLeave={handleHideHoverImage}
+                  className={Style.card}
+                >
+                  <Card.Img
+                    className={Style.image}
+                    src={`https://image.tmdb.org/t/p/w300/${imageCard.poster_path}`}
+                  />
+                </Card>
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
+
       <div className={Style.tabcontainer}>
         <Row>
           <Col
             onClick={children}
             className={
-              movieGenre.children ? Style.headeractive : Style.headerinactive
+              movieGenre.children
+                ? Style.gameheaderactive
+                : Style.headerinactive
             }
           >
             Adventure{" "}
@@ -47,7 +117,7 @@ function MovieCarousel({
           <Col
             onClick={comedy}
             className={
-              movieGenre.comedy ? Style.headeractive : Style.headerinactive
+              movieGenre.comedy ? Style.gameheaderactive : Style.headerinactive
             }
           >
             Arcade
@@ -55,7 +125,7 @@ function MovieCarousel({
           <Col
             onClick={popular}
             className={
-              movieGenre.popular ? Style.headeractive : Style.headerinactive
+              movieGenre.popular ? Style.gameheaderactive : Style.headerinactive
             }
           >
             Casino
@@ -63,7 +133,7 @@ function MovieCarousel({
           <Col
             onClick={action}
             className={
-              movieGenre.action ? Style.headeractive : Style.headerinactive
+              movieGenre.action ? Style.gameheaderactive : Style.headerinactive
             }
           >
             Football
@@ -71,7 +141,7 @@ function MovieCarousel({
           <Col
             onClick={drama}
             className={
-              movieGenre.drama ? Style.headeractive : Style.headerinactive
+              movieGenre.drama ? Style.gameheaderactive : Style.headerinactive
             }
           >
             Action
@@ -79,38 +149,15 @@ function MovieCarousel({
           <Col
             onClick={nollywood}
             className={
-              movieGenre.nollywood ? Style.headeractive : Style.headerinactive
+              movieGenre.nollywood
+                ? Style.gameheaderactive
+                : Style.headerinactive
             }
           >
             Racing
           </Col>
         </Row>
       </div>
-      <Carousel
-        // onSlid={handleSlideDirection}
-        // direction={direction}
-        indicators={false}
-        controls={true}
-      >
-        {imageCards.map((imageCard, index) => (
-          <Carousel.Item key={index}>
-            <div className={Style.cardcontainer}>
-              <Row>
-                {imageCard.map((card) => (
-                  <Col key={card.id} className=" p-0" sm={2}>
-                    <Card className={Style.card}>
-                      <Card.Img
-                        className={Style.image}
-                        src={`https://image.tmdb.org/t/p/w300/${card.poster_path}`}
-                      />
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
     </div>
   );
 }

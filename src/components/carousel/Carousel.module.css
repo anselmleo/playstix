@@ -1,5 +1,8 @@
-.carouselContainer {
+.moviecarouselContainer {
   margin-top: 15px;
+}
+.gamecarouselContainer {
+  margin-top: 35px;
 }
 .title {
   font-weight: bold;
@@ -20,16 +23,12 @@
   height: 130px !important;
   cursor: pointer;
 }
-.cardcontainer {
-  padding: 0 40px;
-  /* background-color: green; */
-}
 
 .movieCarousel {
   padding: 0 110px;
 }
 
-.headeractive {
+.movieheaderactive {
   border-bottom: 3px solid red;
   cursor: pointer;
   margin-left: 0;
@@ -38,14 +37,24 @@
   font-size: 13px;
   font-weight: bold;
 }
+.gameheaderactive {
+  border-bottom: 3px solid #ffffff;
+  cursor: pointer;
+  margin-left: 0;
+  margin-right: 0;
+  color: red;
+  font-size: 13px;
+  font-weight: bold;
+}
 .headerinactive {
   border-bottom: 3px solid transparent;
   cursor: pointer;
-  color: rgb(160, 157, 157) !important;
+  color: rgb(180, 177, 177) !important;
   margin-left: 0;
   margin-right: 0;
   font-size: 13px;
   font-weight: bold;
+  opacity: 0.5;
 }
 
 .headerinactive:hover {
