@@ -1,22 +1,35 @@
-import React from 'react';
-import Styles from './DPNav.module.css';
-import dp from '../../assets/images/dp.svg';
-import dollar from '../../assets/images/dollar.svg';
-import networkSVG from '../../assets/images/network.svg';
+import React from "react";
+import Styles from "./DPNav.module.css";
+import dp from "../../assets/images/dp.svg";
+import dollar from "../../assets/images/dollar.svg";
+import networkSVG from "../../assets/images/network.svg";
+import Moment from "moment";
+// import { Switch } from "@chakra-ui/react";
 
 function DPNav() {
-    return (
-        <div className={Styles.nav}>
-            <div className={Styles.dpNavLeft}>
-                <img src={dp} className="" alt="dp" />
-                <img src={dollar} className="" alt="dollar" />
-                <p>Agent Playstix</p>
-            </div>
-            <div className={Styles.dpNavRight}>
-                <img src={networkSVG} className="" alt="networkSVG" />
-            </div>
+  const time = Moment().format("hh:mm a");
+
+  return (
+    <div className={Styles.nav}>
+      <div>
+        <div className={Styles.dpNavLeft}>
+          <img src={dp} className="" alt="dp" />
+          <div className={Styles.walletbalance}>
+            <div className={Styles.agentname}>Agent Playstix</div>
+            <img src={dollar} className="" alt="dollar" /> <span>1,5000</span>
+          </div>
         </div>
-    )
+      </div>
+
+      <div className={Styles.dpNavRight}>
+        {/* <Stack align="center" direction="row">
+          <Switch size="md" />
+        </Stack> */}
+        <img src={networkSVG} className="" alt="networkSVG" />
+        <span className={Styles.walletbalance}>{time}</span>
+      </div>
+    </div>
+  );
 }
 
-export default DPNav
+export default DPNav;

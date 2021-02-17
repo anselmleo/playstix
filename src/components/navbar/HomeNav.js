@@ -9,6 +9,7 @@ function HomeNav() {
   const { currentUser } = useContext(AuthContext);
   return (
     <div>
+      {/* {!currentUser && ( */}
       <Navbar className={Style.nav}>
         <Link className="link" to="/">
           <Navbar className={Style.logo}>Playstix</Navbar>
@@ -28,6 +29,7 @@ function HomeNav() {
           </Link>
         )}
       </Navbar>
+      {/* )} */}
     </div>
   );
 }

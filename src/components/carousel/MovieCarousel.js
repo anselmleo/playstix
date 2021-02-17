@@ -24,9 +24,9 @@ function MovieCarousel({
       movieSplit = [];
     }
   });
-  if (movieSplit.length) {
-    imageCards.push(movieSplit);
-  }
+  // if (movieSplit.length) {
+  //   imageCards.push(movieSplit);
+  // }
 
   var settings = {
     dots: false,

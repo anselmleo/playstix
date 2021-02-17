@@ -5,6 +5,7 @@ import GameCarousel from "../../components/carousel/GameCarousel";
 import LandingTitle from "../../components/landingTitle/LandingTitle";
 import SignIn from "../../components/signIn/SignIn";
 import Style from "./LandingPage.module.css";
+import HomeNav from "../../components/navbar/HomeNav";
 
 function LandingPage({ actionMovies, imgUrl, setImgUrl }) {
   const [movieGenre, setMovieGenre] = useState({
@@ -81,6 +82,7 @@ function LandingPage({ actionMovies, imgUrl, setImgUrl }) {
 
   return (
     <div>
+      <HomeNav />
       <div className={Style.contentContainer}>
         <Row className="m-0">
           <Col className="m-0" sm={3}></Col>

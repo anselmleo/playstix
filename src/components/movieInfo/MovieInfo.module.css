@@ -1,0 +1,31 @@
+.title {
+  /* margin-top: 5px; */
+  font-size: 40px;
+  font-weight: bold;
+}
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+}
+.button {
+  margin-right: 30px;
+  width: 30%;
+  outline: none;
+  border: 1px solid gray;
+}
+.date {
+  color: gray;
+}
+.datetitle {
+  color: gray;
+  font-weight: bold;
+  font-size: 15px;
+}
+.rating {
+  display: flex;
+  align-items: center;
+}
+.votetext {
+  font-size: 24px;
+  margin-right: 10px;
+}

@@ -1,34 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
+import Styles from "./Dashboard.module.css";
 import DPNav from "../../components/DPNav/DPNav";
+import DashboardMovie from "../../components/dashboardmovie/DashboardMovie";
 
-// const colors = [
-//   "white",
-//   "black",
-//   "blue",
-//   "green",
-//   "pink",
-//   "red",
-//   "purple",
-//   "yellow",
-//   "gray",
-//   "lilac",
-// ];
+function Dashboard({ actionMovies, imgUrl, setImgUrl }) {
+  const [movieGenre, setMovieGenre] = useState({
+    children: false,
+    comedy: false,
+    popular: true,
+    action: false,
+    drama: false,
+    nollywood: false,
+  });
+  const handleChilrenClick = () => {
+    setMovieGenre({
+      children: true,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
 
-function Dashboard() {
-  const [value, setValue] = React.useState(0);
+  const handlePopularClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: true,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
 
-  //   React.useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       setValue((v) => (v === 9 ? 0 : v + 1));
-  //     }, 1000);
-  //   }, []);
+  const handleComedyClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: true,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: false,
+    });
+  };
+  const handleActionClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: true,
+      drama: false,
+      nollywood: false,
+    });
+  };
+  const handleDramaClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: true,
+      nollywood: false,
+    });
+  };
+
+  const handleNollywoodClick = () => {
+    setMovieGenre({
+      children: false,
+      comedy: false,
+      popular: false,
+      action: false,
+      drama: false,
+      nollywood: true,
+    });
+  };
 
   return (
     <>
-      <div
-      //   style={{ backgroundColor: colors[value] }}
-      >
-        <DPNav></DPNav>
+      <div className={Styles.body}>
+        <DPNav />
+
+        <div className={Styles.movies}>
+          <DashboardMovie
+            movieGenre={movieGenre}
+            children={handleChilrenClick}
+            popular={handlePopularClick}
+            drama={handleDramaClick}
+            nollywood={handleNollywoodClick}
+            comedy={handleComedyClick}
+            action={handleActionClick}
+            actionMovies={actionMovies}
+            imgUrl={imgUrl}
+            setImgUrl={setImgUrl}
+          />
+        </div>
       </div>
     </>
   );

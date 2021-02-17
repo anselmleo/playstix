@@ -5,6 +5,7 @@ import Style from "./SignIn.module.css";
 import { withRouter, Redirect } from "react-router";
 import app from "../../config";
 import { AuthContext } from "../../Auth.js";
+import HomeNav from "../navbar/HomeNav";
 
 function SignIn({ history }) {
   const handleLogin = useCallback(
@@ -31,46 +32,49 @@ function SignIn({ history }) {
   }
 
   return (
-    <div className={Style.formcontainer}>
-      <div className={Style.header}>Sign In</div>
-      <Form onSubmit={handleLogin}>
-        <div className={Style.input}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Control
-              type="email"
-              label="remember me"
-              placeholder="Enter email"
-              name="email"
-            />
-          </Form.Group>
-        </div>
-        <div className={Style.input}>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-            />
-          </Form.Group>
-        </div>
+    <div>
+      <HomeNav />
+      <div className={Style.formcontainer}>
+        <div className={Style.header}>Sign In</div>
+        <Form onSubmit={handleLogin}>
+          <div className={Style.input}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Control
+                type="email"
+                label="remember me"
+                placeholder="Enter email"
+                name="email"
+              />
+            </Form.Group>
+          </div>
+          <div className={Style.input}>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
+            </Form.Group>
+          </div>
 
-        <Button className={Style.submit} type="submit">
-          Login
-        </Button>
-        <div className={Style.signinInfo}>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="remember me" />
-          </Form.Group>
-          <div className={Style.forgotpass}>forgot password ?</div>
-        </div>
-      </Form>
+          <Button className={Style.submit} type="submit">
+            Login
+          </Button>
+          <div className={Style.signinInfo}>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="remember me" />
+            </Form.Group>
+            <div className={Style.forgotpass}>forgot password ?</div>
+          </div>
+        </Form>
 
-      <div className={Style.createaccount}>
-        New to Playstix ?{" "}
-        <Link className="link" to="/register">
-          {" "}
-          <span className={Style.signup}>Signup Now</span>
-        </Link>
+        <div className={Style.createaccount}>
+          New to Playstix ?{" "}
+          <Link className="link" to="/register">
+            {" "}
+            <span className={Style.signup}>Signup Now</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

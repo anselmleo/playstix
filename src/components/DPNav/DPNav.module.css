@@ -1,4 +1,15 @@
 .nav {
-    display: flex;
-    justify-self: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.dpNavLeft {
+  display: flex;
+}
+.walletbalance {
+  padding-left: 15px;
+  vertical-align: middle !important;
+}
+.agentname {
+  font-weight: bold;
+  font-size: 16px;
 }

@@ -4,10 +4,10 @@ import Dashboard from "./containers/dashboard/Dashboard";
 import LandingPage from "./containers/landingPage/LandingPage";
 import Login from "./components/signIn/SignIn";
 import movieList from "./services/movieAPI/movieAPIService";
-import HomeNav from "./components/navbar/HomeNav";
 import SignUp from "./components/signUp/SignUp";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
+// import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   const [actionMovies, setActionMovies] = useState([]);
@@ -39,6 +39,7 @@ function App() {
   const hoverImage = `url(https://image.tmdb.org/t/p/w500/${imgUrl})`;
 
   return (
+    // <ChakraProvider>
     <AuthProvider>
       <div
         style={{
@@ -53,7 +54,6 @@ function App() {
         }}
       >
         <BrowserRouter>
-          <HomeNav />
           <Switch>
             <Route exact path={["/"]}>
               <LandingPage
@@ -64,11 +64,21 @@ function App() {
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={SignUp} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard">
+              <PrivateRoute>
+                <Dashboard
+                  setImgUrl={setImgUrl}
+                  imgUrl={imgUrl}
+                  actionMovies={actionMovies}
+                  component={Dashboard}
+                />
+              </PrivateRoute>
+            </Route>
           </Switch>
         </BrowserRouter>
       </div>
     </AuthProvider>
+    // </ChakraProvider>
   );
 }
 

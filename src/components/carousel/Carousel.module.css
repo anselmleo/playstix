@@ -20,7 +20,7 @@
 .image {
   outline: none !important;
   background: none;
-  height: 130px !important;
+  /* height: 130px !important; */
   cursor: pointer;
 }
 
